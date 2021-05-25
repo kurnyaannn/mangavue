@@ -1,15 +1,15 @@
 <template>
   <div id="app" class="bg-main">
-		<Sidebar />
+    <Sidebar />
   </div>
 </template>
 
 <script>
-	import Sidebar from "@/components/Sidebar.vue";
+import Sidebar from "@/components/Sidebar.vue";
 
-	export default {
-	  components: {
-	    Sidebar,
-	  },
-	};
+export default {
+  components: {
+    Sidebar,
+  },
+};
 </script>

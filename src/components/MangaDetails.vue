@@ -1,49 +1,87 @@
 <template>
-	<div class="bg-gray-700 rounded-sm py-4 pl-2 pr-6">
-		<h1 class="font-ptserif font-bold text-white text-xl px-3 mb-3">{{mangaDetails.title}}</h1>
-		<div class="grid grid-cols-12 gap-4">
-	  	<div class="col-start-1 col-span-3 pl-3">
-	  		<img :src="mangaDetails.thumb" :alt="title" class="">
-	  	</div>
-	  	<div class="col-start-4 col-span-12">
-	  		<p class="text-white font-ptserif text-justify">{{mangaDetails.synopsis}}</p>
-	  	</div>
-	  	<div class="col-start-4 col-span-12">
-	  		<table class="table-fixed">
-	  			<tbody>
-	  				<tr>
-	  					<td class="w-1/3">dataA</td>
-	  					<td class="w-1/3">dataB</td>
-	  				</tr>
-	  			</tbody>
-	  		</table>
-	  	</div>
-	  	<!-- <p class="text-white font-ptserif text-justify">{{mangaDetails.synopsis}}</p> -->
-	  </div>
-	</div>
+  <div>
+    <!-- Error -->
+    <ErrorMsg v-if="error" />
+
+    <!-- Loading -->
+    <div v-else class="bg-gray-700 rounded-md py-4 pl-2 pr-6">
+      <div v-if="loading" class="font-ptserif font-bold text-center text-white">
+        Loading Data...
+      </div>
+
+      <!-- Retrieve Successfull -->
+      <div v-else>
+        <h1 class="font-ptserif font-bold text-white text-2xl px-3 mb-3">
+          {{ mangaDetails.title }}
+        </h1>
+        <div class="grid grid-cols-12 gap-4 pl-3">
+          <div class="col-start-1 col-span-3">
+            <div class="flex flex-col font-ptserif">
+              <img :src="mangaDetails.thumb" :alt="title" class="w-full" />
+              <div class="flex flex-col text-white">
+                <div class="my-1">
+                  <h1 class="-mb-1 text-xs font-cinzel font-bold">Author</h1>
+                  <span>{{ mangaDetails.author }}</span>
+                </div>
+                <div class="my-1">
+                  <h1 class="-mb-1 text-xs font-cinzel font-bold">Type</h1>
+                  <span>{{ mangaDetails.type }}</span>
+                </div>
+                <div class="my-1">
+                  <h1 class="-mb-1 text-xs font-cinzel font-bold">Status</h1>
+                  <span>{{ mangaDetails.status }}</span>
+                </div>
+                <div class="my-1">
+                  <h1 class="-mb-1 text-xs font-cinzel font-bold">Genre</h1>
+                  <span
+                    v-for="(items, index) in mangaDetails.genre"
+                    :key="index"
+                    >Genre : {{ items }}</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-start-4 col-span-12 text-white font-ptserif">
+            <h1 class="-mb-1 text-xs font-cinzel font-bold">Synopsis</h1>
+            <p>{{ mangaDetails.synopsis }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-	import axios from "axios";
+  import Service from "@/services/Services.js";
 
-	export default {
-		props: ["manga"],
-		data() {
-			return {
-				mangaDetails: [],
-			};
-		},
-		created() {
-			let manga = this.manga;
+  export default {
+    props: ["manga"],
+    data() {
+      return {
+        mangaDetails: [],
+        loading: true,
+        error: false,
+        isCollapsed: false,
+      };
+    },
+    methods: {
+      toggle() {
+        this.isCollapsed = this.isCollapsed ? false : true;
+      },
+    },
+    mounted() {
+      let manga = this.manga;
 
-	    axios
-	      .get(`https://mangamint.kaedenoki.net/api/manga/detail/${manga}`)
-	      .then((response) => {
-	        this.mangaDetails = response.data;
-	      })
-	      .catch((error) => {
-	        console.log("sorry there was an error " + error.response);
-	      });
-	  },
-	}
+      Service.getMangaDetails(manga)
+        .then((response) => {
+          this.mangaDetails = response.data;
+        })
+        .catch((error) => {
+          console.log("sorry there was an error " + error);
+          this.error = true;
+        })
+        .finally(() => (this.loading = false));
+    },
+  };
 </script>

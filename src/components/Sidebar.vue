@@ -1,57 +1,80 @@
 <template>
   <div class="flex">
-	  <!-- Sidebar -->
-	  <nav class="bg-secondary w-16 flex flex-col justify-between h-screen sticky top-0">
-	    <div class="mb-10">
-	      <ul>
-	        <li>
-	          <router-link to="/" class="flex justify-center items-center h-16 w-16 bg-secondary border-b border-gray-100 border-opacity-30">
-	            <svg width="35" height="35" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-	              <path fill-rule="evenodd" clip-rule="evenodd" d="M150 290C227.32 290 290 227.32 290 150C290 72.6801 227.32 10 150 10C72.6801 10 10 72.6801 10 150C10 227.32 72.6801 290 150 290ZM150 300C232.843 300 300 232.843 300 150C300 67.1573 232.843 0 150 0C67.1573 0 0 67.1573 0 150C0 232.843 67.1573 300 150 300Z" fill="white" />
-	              <path d="M72.8742 40.9551L88.7744 40.9551L158.299 235.05L140.264 235.05L72.8742 40.9551Z" fill="white" />
-	              <path d="M92.8742 100.031H109.874L109.874 265.031H92.8742L92.8742 100.031Z" fill="white" />
-	              <path d="M191 100.031H208V265.031H191V100.031Z" fill="white" />
-	              <path d="M212.349 40.6885L229.374 40.6885L159.054 234.529L141.299 234.045L212.349 40.6885Z" fill="white" />
-	            </svg>
-	          </router-link>
-	        </li>
-	        <li class="flex flex-col h-16 justify-center">
-	          <router-link to="/">
-	            <span>
-	              <BaseIcon name="star" class="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-ternary transition ease-in-out duration-200" />
-	            </span>
-	          </router-link>
-	        </li>
-	        <li class="flex flex-col h-16 justify-center">
-	          <router-link to="/">
-	            <span>
-	              <BaseIcon name="trending-up" class="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-ternary transition ease-in-out duration-200" />
-	            </span>
-	          </router-link>
-	        </li>
-	        <li class="flex flex-col h-16 justify-center">
-	          <router-link to="/">
-	            <span>
-	              <BaseIcon name="book" class="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-ternary transition ease-in-out duration-200" />
-	            </span>
-	          </router-link>
-	        </li>
-	      </ul>
-	    </div>
-	    <div class="flex flex-col h-16 justify-center">
-			  <router-link to="/">
-			    <span>
-			      <BaseIcon name="info" class="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-ternary transition ease-in-out duration-200" />
-			    </span>
-			  </router-link>
-	    </div>
-	  </nav>
-	  <!-- Content -->
-	  <div class="w-full">
-	  	<Header />
-	    <Contents />
-	  </div>
-	</div>
+    <!-- Sidebar -->
+    <nav
+      class="bg-main w-24 flex flex-col justify-center h-screen sticky top-0">
+      <div>
+        <ul class="pl-5">
+          <li class="absolute top-0">
+            <div
+              class="flex justify-center items-center h-20 pb-1 cursor-pointer" style="width: 4.5rem">
+              <svg
+                width="35"
+                height="35"
+                viewBox="0 0 300 300"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M85 68.9675L99.5481 68.9675L157.882 188.709L142.5 188.709L85 68.9675Z"
+                  fill="#2bebc8"/>
+                <path
+                  d="M201.77 67.8492L215.5 67.8492L157.5 189.155L142.5 189.155L201.77 67.8492Z"
+                  fill="#2bebc8"/>
+                <path
+                  d="M181 112.655H193V237.655H181V112.655Z"
+                  fill="#2bebc8"/>
+                <path
+                  d="M108 112.655H121V237.655H108V112.655Z"
+                  fill="#2bebc8"/>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M150 288C226.215 288 288 226.215 288 150C288 73.7847 226.215 12 150 12C73.7847 12 12 73.7847 12 150C12 226.215 73.7847 288 150 288ZM150 300C232.843 300 300 232.843 300 150C300 67.1573 232.843 0 150 0C67.1573 0 0 67.1573 0 150C0 232.843 67.1573 300 150 300Z"
+                  fill="#2bebc8"/>
+              </svg>
+            </div>
+          </li>
+          <div class="grid grid-cols-1 gap-2 px-2 py-2 bg-teriary rounded-md">
+            <router-link
+              to="/"
+              exact
+              class="flex flex-col h-12 text-white justify-center items-center transition duration-300 ease-id-out rounded-md hover:bg-purple hover:text-white">
+              <span>
+                <BaseIcon
+                  name="home"
+                  class="fill-current h-5 w-5 transition ease-in-out duration-200"/>
+              </span>
+            </router-link>
+            <router-link
+              to="/reccomended"
+              exact
+              class="flex flex-col h-12 text-white justify-center items-center transition duration-300 ease-id-out rounded-md hover:bg-purple hover:text-white">
+              <span>
+                <BaseIcon
+                  name="star"
+                  class="fill-current h-5 w-5 transition ease-in-out duration-200"/>
+              </span>
+            </router-link>
+            <router-link
+              :to="{ name: 'manga-popular', params: { popularity: 'popular' } }"
+              exact
+              class="flex flex-col h-12 text-white justify-center items-center transition duration-300 ease-id-out rounded-md hover:bg-purple hover:text-white">
+              <span>
+                <BaseIcon
+                  name="trending-up"
+                  class="fill-current h-5 w-5 transition ease-in-out duration-200"/>
+              </span>
+            </router-link>
+          </div>
+        </ul>
+      </div>
+    </nav>
+    <!-- Content -->
+    <div class="w-full">
+      <Header />
+      <Contents />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -60,8 +83,8 @@
 
 	export default {
 	  components: {
-	  	Header,
-	  	Contents,
+	    Header,
+	    Contents,
 	  },
 	};
 </script>

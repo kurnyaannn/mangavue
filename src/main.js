@@ -5,7 +5,8 @@ import store from "./store";
 import "./assets/css/main.css";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
-import Banner from "./components/Banner.vue";
+import "nprogress/nprogress.css";
+import ErrorMsg from "./components/ErrorMsg.vue";
 
 const requireComponent = require.context(
   "./components",
@@ -22,7 +23,7 @@ requireComponent.keys().forEach((fileName) => {
   Vue.component(componentName, componentConfig.default || componentConfig);
 });
 
-Vue.component('Banner', Banner);
+Vue.component("ErrorMsg", ErrorMsg);
 Vue.config.productionTip = false;
 
 new Vue({

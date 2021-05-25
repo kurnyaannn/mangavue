@@ -5,17 +5,21 @@ module.exports = {
     extend: {
       animation: ["motion-safe"],
       colors: {
-        main: "#272c38",
-        secondary: "#1e2530",
-        ternary: "#64ffda",
-      }
+        main: "#1e1f22",
+        secondary: "#151618",
+        teriary: "#0c0c0e",
+        green: "#2bebc8",
+        purple: "#6746ed",
+      },
     },
     fontFamily: {
-      nunito: ["Nunito"],
-      playfair: ["Playfair Display"],
-      merriweather: ["Merriweather"],
       ptserif: ["PT Serif"],
-      cinzel: ["Cinzel"]
+      cinzel: ["Cinzel"],
+      lato: ["Lato"],
+      poppins: ["Poppins"],
+    },
+    outline: {
+      purple: ["2px dashed #6746ed", "2px"],
     },
   },
   variants: {

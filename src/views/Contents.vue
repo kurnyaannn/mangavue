@@ -1,8 +1,8 @@
 <template>
-  <div class="pl-5 pr-10 py-6 grid grid-cols-12 gap-4">
-    <MainContent class="col-start-1 col-span-10" />
-    <SideContent class="col-start-11 col-span-12" />
-   </div>
+  <div class="pl-5 grid grid-cols-12 gap-4">
+    <MainContent class="col-start-1 col-span-9 pt-6 pb-4" />
+    <SideContent class="col-start-10 col-span-9 pt-6" />
+  </div>
 </template>
 
 <script>

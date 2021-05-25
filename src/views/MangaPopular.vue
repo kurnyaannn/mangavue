@@ -12,7 +12,7 @@
       <!-- Retrieve Successfull -->
       <div v-else>
         <h1 class="text-white font-ptserif font-bold text-xl mb-5">
-          {{ genre }} Manga
+          Most Popular Manga
         </h1>
         <div class="grid grid-cols-2 gap-4">
           <MangaAltCard
@@ -32,7 +32,7 @@ import Service from "@/services/Services.js";
 
 export default {
   props: {
-    genre: Object,
+    popularity: Object,
   },
   components: {
     MangaAltCard,
@@ -45,9 +45,9 @@ export default {
     };
   },
   mounted() {
-    let genre = this.genre;
+    let popularity = this.popularity;
 
-    Service.getMangaGenre(genre)
+    Service.getMangaPopular(popularity)
       .then((response) => {
         this.mangas = response.data.manga_list;
       })
