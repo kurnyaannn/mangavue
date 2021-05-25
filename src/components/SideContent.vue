@@ -1,6 +1,26 @@
 <template>
-  <div class="bg-secondary h-full px-6 pb-4">
-    <div class="pb-4">
+  <div class="bg-secondary h-full px-7 pb-4">
+    <div class="relative text-gray-600 py-6 sticky top-0 z-50 bg-secondary">
+      <input
+        class="bg-black font-poppins text-white w-full h-10 px-5 pr-12 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green transition ease-in-out duration-300"
+        name="search"
+        @focus="focus = true"
+        @blur="focus = false"
+        placeholder="Search..." />
+      <button type="submit" class="absolute right-0 top-0 mt-9 mr-4">
+        <svg
+          class="h-4 w-4 fill-current transition ease-in-out duration-300"
+          :class="[focus ? 'text-green' : 'text-white']"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+          viewBox="0 0 56.966 56.966" xml:space="preserve"
+          style="enable-background: new 0 0 56.966 56.966" width="512px" height="512px">
+          <path
+            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+        </svg>
+      </button>
+    </div>
+    <div class="mt-12 pb-4">
       <div class="flex justify-center items-center text-center text-white">
         <a
           v-for="project in projectDetails"
@@ -65,7 +85,7 @@
         <h1 class="font-poppins font-bold text-white text-xl px-3 mb-3">
           Genres
         </h1>
-        <div class="grid grid-cols-6 font-ptserif text-white py-2 px-3">
+        <div class="grid grid-cols-6 gap-1 font-ptserif text-white py-2 px-3">
           <router-link
             v-for="(items, index) in genres"
             :key="index"
@@ -116,6 +136,7 @@
             url: "https://github.com/kurnyaannn/mangavue",
           },
         ],
+        focus: false,
         loading: true,
         error: false,
       };
