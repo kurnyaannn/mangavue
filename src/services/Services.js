@@ -7,23 +7,32 @@ const apiClient = axios.create({
     Accept: "application/json",
     "Content-Type": "application/json",
   },
-  timeout: 10000,
+  timeout: 5000,
 });
 
 export default {
-  getMangas() {
-    return apiClient.get("manga/page/1");
+  getMangas(page) {
+    return apiClient.get(`manga/page/${page}`);
   },
   getGenreLists() {
     return apiClient.get("genres");
   },
-  getMangaPopular(popularity) {
-    return apiClient.get(`manga/${popularity}/1`);
+  getMangaPopular(popularity, page) {
+    return apiClient.get(`manga/${popularity}/${page}`);
+  },
+  getMangaRecommended() {
+    return apiClient.get("recommended");
   },
   getMangaGenre(genre) {
     return apiClient.get(`genres/${genre}/1`);
   },
   getMangaDetails(manga) {
-    return apiClient.get("manga/detail/" + manga);
+    return apiClient.get(`manga/detail/${manga}`);
   },
+  getMangaChapter(chapter) {
+    return apiClient.get(`chapter/${chapter}`);
+  },
+  getMangaSearch(query) {
+    return apiClient.get(`search/${query}`);
+  }
 };

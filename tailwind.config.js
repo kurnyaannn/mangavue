@@ -18,9 +18,6 @@ module.exports = {
       lato: ["Lato"],
       poppins: ["Poppins"],
     },
-    outline: {
-      purple: ["2px dashed #6746ed", "2px"],
-    },
   },
   variants: {
     extend: {},

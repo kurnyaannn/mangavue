@@ -1,8 +1,10 @@
 <template>
-  <div class="grid grid-cols-12 gap-4">
-    <Navbar class="col-start-1 col-span-1" />
-    <MainContent class="col-start-2 col-span-8" />
-    <SideContent class="col-start-10 col-span-9" />
+  <div class="flex flex-row justify-between">
+    <Navbar class="w-1/12" />
+    <div class="flex w-11/12 justify-between">
+      <MainContent class="w-full" />
+      <SideContent class="w-2/5" />
+    </div>
   </div>
 </template>
 

@@ -7,7 +7,7 @@
       <img
         :src="thumb"
         :alt="title"
-        class="rounded-l-md w-52 h-36 object-cover"/>
+        class="rounded-l-md w-48 h-36 object-cover"/>
       <div class="px-3 pt-2">
         <h1 v-html="title" class="font-ptserif text-md mb-1"></h1>
       </div>
@@ -20,11 +20,9 @@
     props: {
       manga: Object,
     },
-    data() {
-      return {
-        thumb: this.manga.thumb,
-        title: this.manga.title,
-      };
+    computed: {
+      thumb() { return this.manga.thumb },
+      title() { return this.manga.title },
     },
   };
 </script>

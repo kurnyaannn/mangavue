@@ -5,8 +5,8 @@
 
     <!-- Loading -->
     <div v-else class="bg-gray-700 rounded-sm p-4">
-      <div v-if="loading" class="font-ptserif font-bold text-center text-white">
-        Loading Data...
+      <div v-if="loading">
+        <LoadingCard />
       </div>
 
       <!-- Retrieve Successfull -->

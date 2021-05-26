@@ -11,7 +11,7 @@ import ErrorMsg from "./components/ErrorMsg.vue";
 const requireComponent = require.context(
   "./components",
   false,
-  /Base[A-Z]\w+\.(vue|js)$/
+  /[A-Z]\w+\.(vue|js)$/
 );
 
 requireComponent.keys().forEach((fileName) => {

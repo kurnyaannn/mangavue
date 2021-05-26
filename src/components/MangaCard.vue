@@ -11,7 +11,7 @@
       <div class="absolute items-baseline l-0 m-2">
         <div
           class="flex font-nunito font-semibold text-xs bg-gray-300 rounded-full px-2">
-          <BaseIcon name="clock" width="15" class="text-black" />
+          <Icon name="clock" width="15" class="text-black" />
           <span v-html="updated_on" class="ml-0.5 mt-0.5 text-black"></span>
         </div>
       </div>
@@ -28,13 +28,11 @@
     props: {
       manga: Object,
     },
-    data() {
-      return {
-        thumb: this.manga.thumb,
-        title: this.manga.title,
-        chapter: this.manga.chapter,
-        updated_on: this.manga.updated_on + " lalu",
-      };
+    computed: {
+      thumb() { return this.manga.thumb },
+      title() { return this.manga.title },
+      chapter() { return this.manga.chapter },
+      updated_on() { return this.manga.updated_on + " lalu" },
     },
   };
 </script>

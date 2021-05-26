@@ -1,6 +1,6 @@
 <template>
-  <nav class="bg-main w-full flex flex-col justify-center h-screen sticky top-0">
-    <div class="pl-6">
+  <nav class="bg-main px-6 flex flex-col justify-center h-screen sticky top-0">
+    <div>
       <ul>
         <li class="absolute top-0">
           <div class="flex flex-col justify-center items-center h-20 pb-1 cursor-pointer w-16">
@@ -14,19 +14,25 @@
           </div>
         </li>
         <div class="grid grid-cols-1 gap-2 px-2 py-2 bg-teriary rounded-md">
-          <router-link to="/" exact class="flex flex-col h-12 text-white justify-center items-center transition duration-300 ease-id-out rounded-md hover:bg-purple hover:text-white">
+          <router-link
+            :to="{ name: 'manga-lists', params: { page: 1 } }" exact
+            class="flex flex-col h-12 text-white justify-center items-center transition duration-300 ease-id-out rounded-md hover:bg-purple hover:text-white">
             <span>
-              <BaseIcon name="home" class="fill-current h-5 w-5 transition ease-in-out duration-200" />
+              <Icon name="home" class="fill-current h-5 w-5 transition ease-in-out duration-200" />
             </span>
           </router-link>
-          <router-link to="/reccomended" exact class="flex flex-col h-12 text-white justify-center items-center transition duration-300 ease-id-out rounded-md hover:bg-purple hover:text-white">
+          <router-link
+            :to="{ name: 'manga-recommended' }" exact
+            class="flex flex-col h-12 text-white justify-center items-center transition duration-300 ease-id-out rounded-md hover:bg-purple hover:text-white">
             <span>
-              <BaseIcon name="star" class="fill-current h-5 w-5 transition ease-in-out duration-200" />
+              <Icon name="star" class="fill-current h-5 w-5 transition ease-in-out duration-200" />
             </span>
           </router-link>
-          <router-link :to="{ name: 'manga-popular', params: { popularity: 'popular' } }" exact class="flex flex-col h-12 text-white justify-center items-center transition duration-300 ease-id-out rounded-md hover:bg-purple hover:text-white">
+          <router-link
+            :to="{ name: 'manga-popular', params: { popularity: 'popular', page: 1 } }" exact
+            class="flex flex-col h-12 text-white justify-center items-center transition duration-300 ease-id-out rounded-md hover:bg-purple hover:text-white">
             <span>
-              <BaseIcon name="trending-up" class="fill-current h-5 w-5 transition ease-in-out duration-200" />
+              <Icon name="trending-up" class="fill-current h-5 w-5 transition ease-in-out duration-200" />
             </span>
           </router-link>
         </div>
@@ -36,6 +42,5 @@
 </template>
 
 <script>
-	export default {
-	};
+  
 </script>

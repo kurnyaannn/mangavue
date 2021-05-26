@@ -4,47 +4,71 @@
     <ErrorMsg v-if="error" />
 
     <!-- Loading -->
-    <div v-else class="bg-gray-700 rounded-md py-4 pl-2 pr-6">
-      <div v-if="loading" class="font-ptserif font-bold text-center text-white">
-        Loading Data...
+    <div v-else class="">
+      <div v-if="loading">
+        <LoadingDetails />
       </div>
 
       <!-- Retrieve Successfull -->
       <div v-else>
-        <h1 class="font-poppins font-semibold text-white text-2xl px-3 mb-3">
-          {{ mangaDetails.title }}
-        </h1>
-        <div class="grid grid-cols-12 gap-4 pl-3">
+        <h1 v-html="title" class="font-poppins font-semibold text-white text-2xl mb-3"></h1>
+        <div class="grid grid-cols-12 gap-4">
           <div class="col-start-1 col-span-3">
             <div class="flex flex-col font-ptserif">
-              <img :src="mangaDetails.thumb" :alt="title" class="w-full" />
+              <img :src="thumb" :alt="title" class="w-full mb-1" />
               <div class="flex flex-col text-white">
                 <div class="my-1">
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Author</h1>
-                  <span>{{ mangaDetails.author }}</span>
+                  <span v-html="author"></span>
                 </div>
                 <div class="my-1">
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Type</h1>
-                  <span>{{ mangaDetails.type }}</span>
+                  <span v-html="type"></span>
                 </div>
                 <div class="my-1">
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Status</h1>
-                  <span>{{ mangaDetails.status }}</span>
+                  <span v-html="status"></span>
                 </div>
                 <div class="my-1">
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Genre</h1>
                   <span
-                    v-for="(items, index) in mangaDetails.genre"
+                    v-for="(items, index) in genre"
                     :key="index">
-                    Genre : {{ items }}
+                    {{ items.genre_name }},
                   </span>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-start-4 col-span-12 text-white font-ptserif">
-            <h1 class="text-xs font-poppins font-semibold">Synopsis</h1>
-            <p>{{ mangaDetails.synopsis }}</p>
+            <div class="mb-3">
+              <div class="flex text-xs font-poppins font-semibold">
+                <h1>Synopsis</h1>
+                <div @click="toggle" class="ml-1 cursor-pointer">
+                  [
+                    <span v-if="showSynopsis" class="px-1 font-normal">Hide</span>
+                    <span v-else class="px-1 font-normal">Show</span>
+                  ]
+                </div>
+              </div>
+              <p 
+                v-html="synopsis" 
+                :class="showSynopsis ? 'block' : 'hidden'"></p>
+            </div>
+            <div>
+              <h1 class="text-xs font-poppins font-semibold mb-1">Chapter List</h1>
+              <div class="ss-container w-full overflow-y-auto max-h-80 bg-teriary p-3 rounded-sm">
+                <ul>
+                  <li v-for="(items, index) in chapter" :key="index">
+                    <router-link
+                      :to="{ name: 'manga-chapter', params: { chapter: items.chapter_endpoint } }"
+                      class="flex w-full py-1 px-2 rounded-sm hover:bg-purple">
+                      {{ items.chapter_title }}
+                    </router-link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -57,31 +81,71 @@
 
   export default {
     props: ["manga"],
+    computed: {
+      thumb() { return this.mangaDetails.thumb },
+      title() { return this.mangaDetails.title },
+      author() { return this.mangaDetails.author },
+      status() { return this.mangaDetails.status },
+      type() { return this.mangaDetails.type },
+      genre() { return this.mangaDetails.genre_list },
+      synopsis() { return this.mangaDetails.synopsis },
+      chapter() { return this.mangaDetails.chapter },
+    },
     data() {
       return {
         mangaDetails: [],
         loading: true,
         error: false,
-        isCollapsed: false,
+        showSynopsis: false,
       };
+    },
+    watch: {
+      manga: {
+        handler: 'fetchData',
+        deep: true,
+        immediate: true
+      },
     },
     methods: {
       toggle() {
-        this.isCollapsed = this.isCollapsed ? false : true;
+        this.showSynopsis = this.showSynopsis ? false : true;
       },
+      async fetchData() {
+        let manga = this.manga;
+        this.loading = true;
+
+        Service.getMangaDetails(manga)
+          .then((response) => {
+            this.mangaDetails = response.data;
+            console.log(this.mangaDetails);
+          })
+          .catch((error) => {
+            console.log("sorry there was an error " + error);
+            this.error = true;
+          })
+          .finally(() => (this.loading = false));
+        }
     },
     mounted() {
-      let manga = this.manga;
+      this.fetchData();
+      // let manga = this.manga;
+      //   this.loading = true;
 
-      Service.getMangaDetails(manga)
-        .then((response) => {
-          this.mangaDetails = response.data;
-        })
-        .catch((error) => {
-          console.log("sorry there was an error " + error);
-          this.error = true;
-        })
-        .finally(() => (this.loading = false));
+      //   Service.getMangaDetails(manga)
+      //     .then((response) => {
+      //       this.mangaDetails = response.data;
+      //     })
+      //     .catch((error) => {
+      //       console.log("sorry there was an error " + error);
+      //       this.error = true;
+      //     })
+      //     .finally(() => {
+      //       if (this.mangaDetails != null) {
+      //         this.loading = false;
+      //       } else {
+      //         this.loading = true;
+      //       }
+      //     });
     },
   };
 </script>
