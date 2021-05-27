@@ -1,7 +1,11 @@
 <template>
   <aside class="bg-secondary h-full pb-24 px-5 lg:px-7">
-
     <div class="relative text-gray-600 pt-20 pb-6 lg:pt-6 sticky top-0 z-50 bg-secondary">
+      <div
+        class="flex justify-center items-center lg:hidden"
+        :class="[query ? 'block' : 'hidden']">
+        <h1 class="absolute text-white font-poppins font-semibold top-0 mt-7"> > Close the menu to see the result</h1>  
+      </div>
       <input
         class="bg-teriary font-poppins text-white w-full h-10 pl-4 pr-12 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green transition ease-in-out duration-300"
         name="search"
