@@ -10,7 +10,7 @@
 
 MangaVUE is an Online Manga Reading App, built using VueJS and TailwindCSS. The data used for this project is from <a href="https://komiku.id">Komiku.id</a>, with the help of API from <a href="https://github.com/febryardiansyah/manga-api">manga-api</a> by Febry Adriansyah.
 
-This project will always work as long as the API doesn't change. And also if you find error message that says "...sorry we're not able to retrieve blah blah blah..." that means the API request is fail or the main server is down and whatnot.
+This project will always work as long as the API doesn't change. And also if you find error message that says "...sorry we're not able to retrieve blah blah blah..." that means the API request is fail or the main server is down or whatnot.
 
 If you find any bug(s) or something, just open issue.
 
@@ -18,7 +18,7 @@ If you find any bug(s) or something, just open issue.
 
 ## Installation
 * Clone this repository using `git clone` command (or just download the `zip` version).
-* Project setup using `npm`.
+* Navigate to Project Directory. Project setup using `npm`.
   ```bash
   $ npm install
   ```
