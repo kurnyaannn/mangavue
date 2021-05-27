@@ -17,19 +17,19 @@
             <div class="flex flex-col md:flex-row lg:flex-col font-ptserif">
               <img :src="thumb" :alt="title" class="w-full mb-1 md:pr-4 lg:pr-0" />
               <div class="flex flex-col text-white w-full">
-                <div class="my-1">
+                <div class="my-2 md:mt-0 lg:mt-2">
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Author</h1>
                   <span v-html="author"></span>
                 </div>
-                <div class="my-1">
+                <div class="my-2">
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Type</h1>
                   <span v-html="type"></span>
                 </div>
-                <div class="my-1">
+                <div class="my-2">
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Status</h1>
                   <span v-html="status"></span>
                 </div>
-                <div class="mt-1 mb-2">
+                <div class="my-2">
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Genre</h1>
                   <span
                     v-for="(items, index) in genre"
@@ -40,7 +40,7 @@
               </div>
             </div>
           </div>
-          <div class="lg:col-start-4 lg:col-span-12 text-white font-ptserif">
+          <div class="my-2 md:my-0 lg:col-start-4 lg:col-span-12 text-white font-ptserif">
             <div class="mb-3">
               <div class="flex text-xs font-poppins font-semibold">
                 <h1>Synopsis</h1>
