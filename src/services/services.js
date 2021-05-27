@@ -7,7 +7,7 @@ const apiClient = axios.create({
     Accept: "application/json",
     "Content-Type": "application/json",
   },
-  timeout: 5000,
+  timeout: 10000,
 });
 
 export default {
@@ -23,8 +23,8 @@ export default {
   getMangaRecommended() {
     return apiClient.get("recommended");
   },
-  getMangaGenre(genre) {
-    return apiClient.get(`genres/${genre}/1`);
+  getMangaGenre(genre, page) {
+    return apiClient.get(`genres/${genre}/${page}`);
   },
   getMangaDetails(manga) {
     return apiClient.get(`manga/detail/${manga}`);

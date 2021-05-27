@@ -12,11 +12,11 @@
       <!-- Retrieve Successfull -->
       <div v-else>
         <h1 v-html="title" class="font-poppins font-semibold text-white text-2xl mb-3"></h1>
-        <div class="grid grid-cols-12 gap-4">
-          <div class="col-start-1 col-span-3">
-            <div class="flex flex-col font-ptserif">
-              <img :src="thumb" :alt="title" class="w-full mb-1" />
-              <div class="flex flex-col text-white">
+        <div class="flex flex-col lg:grid lg:grid-cols-12 lg:gap-4">
+          <div class="md:col-span-12 lg:col-start-1 lg:col-span-3">
+            <div class="flex flex-col md:flex-row lg:flex-col font-ptserif">
+              <img :src="thumb" :alt="title" class="w-full mb-1 md:pr-4 lg:pr-0" />
+              <div class="flex flex-col text-white w-full">
                 <div class="my-1">
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Author</h1>
                   <span v-html="author"></span>
@@ -29,7 +29,7 @@
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Status</h1>
                   <span v-html="status"></span>
                 </div>
-                <div class="my-1">
+                <div class="mt-1 mb-2">
                   <h1 class="-mb-1 text-xs font-poppins font-semibold">Genre</h1>
                   <span
                     v-for="(items, index) in genre"
@@ -40,7 +40,7 @@
               </div>
             </div>
           </div>
-          <div class="col-start-4 col-span-12 text-white font-ptserif">
+          <div class="lg:col-start-4 lg:col-span-12 text-white font-ptserif">
             <div class="mb-3">
               <div class="flex text-xs font-poppins font-semibold">
                 <h1>Synopsis</h1>
@@ -61,7 +61,7 @@
                 <ul>
                   <li v-for="(items, index) in chapter" :key="index">
                     <router-link
-                      :to="{ name: 'manga-chapter', params: { chapter: items.chapter_endpoint } }"
+                      :to="{ name: 'manga-chapter', params: { chapter: items.chapter_endpoint } }" exact
                       class="flex w-full py-1 px-2 rounded-sm hover:bg-purple">
                       {{ items.chapter_title }}
                     </router-link>
@@ -77,7 +77,7 @@
 </template>
 
 <script>
-  import Service from "@/services/Services.js";
+  import Service from "@/services/services.js";
 
   export default {
     props: ["manga"],

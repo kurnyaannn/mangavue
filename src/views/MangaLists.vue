@@ -14,7 +14,7 @@
 
       <!-- Retrieve Successfull -->
       <div v-else>
-        <div class="grid grid-cols-2 gap-4" :key="index">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <MangaCard
             v-for="(items, index) in mangas"
             :key="index"
@@ -26,7 +26,8 @@
           <button
             @click="previousPage"
             :disabled="page <= 1"
-            class="bg-teriary rounded-l-md px-3 transition duration-300 ease-in-out focus:outline-none">
+            class="rounded-l-md px-3 transition duration-300 ease-in-out focus:outline-none"
+            :class="[page <= 1 ? 'bg-gray-700' : 'bg-teriary hover:bg-purple']">
             <Icon name="arrow-left" />
           </button>
           <div class="text-center bg-main w-10 py-2 px-3 "> {{ page }} </div>
@@ -44,7 +45,7 @@
 <script>
   import LoadingCard from "@/components/LoadingCard.vue";
   import MangaCard from "@/components/MangaCard.vue";
-  import Service from "@/services/Services.js";
+  import Service from "@/services/services.js";
 
   export default {
     components: {

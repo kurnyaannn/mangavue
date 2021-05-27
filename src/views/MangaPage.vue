@@ -22,15 +22,6 @@
         </div>
       </div>
       <div class="flex flex-col justify-center items-center mt-6">
-        <!-- <div class="flex flex-row mx-auto px-2 font-poppins font-semibold text-white">
-          <button @click="previousPage" :disabled="page <= 1" class="bg-teriary rounded-l-md px-3 transition duration-300 ease-in-out hover:bg-purple focus:outline-none">
-            <Icon name="arrow-left" />
-          </button>
-          <div class="text-center bg-main w-10 py-2 px-3 "> {{ page }} </div>
-          <button @click="nextPage" class="bg-teriary rounded-r-md px-3 transition duration-300 ease-in-out hover:bg-purple focus:outline-none">
-            <Icon name="arrow-right" />
-          </button>
-        </div> -->
         <div class="flex flex-row mx-auto px-2 font-poppins font-semibold text-white">
           <button @click="previousPage" :disabled="page <= 1" class="bg-teriary rounded-l-md px-3 transition duration-300 ease-in-out hover:bg-purple focus:outline-none">
             <Icon name="arrow-left" />
@@ -50,7 +41,7 @@
 <script>
   import LoadingCard from "@/components/LoadingCard.vue";
   import MangaCard from "@/components/MangaCard.vue";
-  import Service from "@/services/Services.js";
+  import Service from "@/services/services.js";
 
   export default {
   	props: {

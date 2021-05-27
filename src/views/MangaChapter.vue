@@ -1,8 +1,5 @@
 <template>
   <div>
-    <h1 v-html="chapterTitle" class="mb-5 text-white font-poppins font-semibold text-xl capitalize">
-      
-    </h1>
     <!-- Error -->
     <ErrorMsg v-if="error" />
 
@@ -14,6 +11,7 @@
 
       <!-- Retrieve Successfull -->
       <div v-else>
+        <h1 v-html="chapterTitle" class="mb-5 text-white font-poppins font-semibold text-xl capitalize"></h1>
         <div v-for="(items, index) in chapterImageList" :key="index">
           <img :src="items.chapter_image_link">
         </div>
@@ -24,7 +22,7 @@
 
 <script>
   import LoadingCard from "@/components/LoadingCard.vue";
-  import Service from "@/services/Services.js";
+  import Service from "@/services/services.js";
 
   export default {
     props: {

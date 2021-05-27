@@ -1,6 +1,6 @@
 <template>
-  <aside class="bg-secondary h-full px-7 pb-6">
-    <div class="relative text-gray-600 py-6 sticky top-0 z-50 bg-secondary">
+  <aside class="bg-secondary h-full pb-24 px-5 lg:px-7">
+    <div class="relative text-gray-600 pt-20 pb-6 lg:pt-6 sticky top-0 z-50 bg-secondary">
       <input
         class="bg-teriary font-poppins text-white w-full h-10 pl-4 pr-12 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green transition ease-in-out duration-300"
         name="search"
@@ -40,79 +40,81 @@
         </ul>
       </div>
     </div>
-    <div class="mt-12 pb-4">
-      <div class="flex justify-center items-center text-center text-white">
-        <a
-          v-for="project in projectDetails"
-          :key="project"
-          :href="project.url"
-          class="flex flex-row w-full bg-teriary justify-center items-center px-2 py-2 rounded-md font-cinzel font-bold transition ease-in-out duration-300 transform hover:-translate-y-1 hover:bg-purple">
-          <Icon :name="project.icon"/>
-          <span
-            v-html="project.name"
-            class="ml-3 font-cinzel font-bold text-xl"
-          ></span>
-        </a>
-      </div>
-    </div>
-    <div class="py-4 mb-3">
-      <h1 class="font-poppins font-semibold text-white text-xl px-3 mb-3">
-        Author
-      </h1>
-      <div class="flex flex-row justify-between text-white py-2 px-3">
-        <a
-          v-for="detail in authorDetails"
-          :key="detail"
-          :href="detail.url"
-          target="_blank"
-          class=" flex flex-col items-center justify-center w-8 h-8 bg-teriary rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:bg-purple">
-          <Icon :name="detail.icon" />
-        </a>
-      </div>
-    </div>
-    <div class="rounded-md py-4 mb-3 border border-gray-400">
-      <h1 class="font-poppins font-semibold text-white text-xl px-3 mb-3">
-        Credits
-      </h1>
-      <div class="flex flex-row justify-between text-white py-2 px-3">
-        <div
-          v-for="credit in credits"
-          :key="credit"
-          class="flex flex-col justify-center items-center">
+    <div class="">
+      <div class="mt-12 pb-4">
+        <div class="flex justify-center items-center text-center text-white">
           <a
-            :href="credit.url"
-            target="_blank"
-            class="flex flex-col items-center justify-center w-8 h-8 rounded-full bg-teriary transition duration-300 ease-in-out transform hover:-translate-y-1 hover:bg-purple">
-            <Icon :name="credit.icon" />
+            v-for="project in projectDetails"
+            :key="project"
+            :href="project.url"
+            class="flex flex-row w-full bg-teriary justify-center items-center px-2 py-2 rounded-md font-cinzel font-bold transition ease-in-out duration-300 transform hover:-translate-y-1 hover:bg-purple">
+            <Icon :name="project.icon"/>
+            <span
+              v-html="project.name"
+              class="ml-3 font-cinzel font-bold text-xl"
+            ></span>
           </a>
-          <span v-html="credit.name" class="font-ptserif font-bold"></span>
         </div>
       </div>
-    </div>
-
-    <!-- Error -->
-    <ErrorMsg v-if="error" />
-
-    <!-- Loading -->
-    <div v-else class="">
-      <div v-if="loading">
-        <LoadingGenre />
+      <div class="py-4 mb-3">
+        <h1 class="font-poppins font-semibold text-white text-xl px-3 mb-3">
+          Author
+        </h1>
+        <div class="flex flex-row justify-between text-white py-2 px-3">
+          <a
+            v-for="detail in authorDetails"
+            :key="detail"
+            :href="detail.url"
+            target="_blank"
+            class=" flex flex-col items-center justify-center w-8 h-8 bg-teriary rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:bg-purple">
+            <Icon :name="detail.icon" />
+          </a>
+        </div>
+      </div>
+      <div class="rounded-md py-4 mb-3 border border-gray-400">
+        <h1 class="font-poppins font-semibold text-white text-xl px-3 mb-3">
+          Credits
+        </h1>
+        <div class="flex flex-row justify-between text-white py-2 px-3">
+          <div
+            v-for="credit in credits"
+            :key="credit"
+            class="flex flex-col justify-center items-center">
+            <a
+              :href="credit.url"
+              target="_blank"
+              class="flex flex-col items-center justify-center w-8 h-8 rounded-full bg-teriary transition duration-300 ease-in-out transform hover:-translate-y-1 hover:bg-purple">
+              <Icon :name="credit.icon" />
+            </a>
+            <span v-html="credit.name" class="font-ptserif font-bold"></span>
+          </div>
+        </div>
       </div>
 
-      <!-- Retrieve Successfull -->
-      <div v-else class="bg-teriary rounded-md py-4">
-        <h1 class="font-poppins font-semibold text-white text-xl px-3 mb-3">
-          Genres
-        </h1>
-        <div class="grid grid-cols-6 gap-1 font-ptserif text-white py-2 px-3">
-          <router-link
-            v-for="(items, index) in genres"
-            :key="index"
-            :genre="items"
-            :to="{ name: 'manga-genre', params: { genre: items.endpoint } }"
-            class="col-span-3 rounded-sm px-1 transition duration-300 ease-in-out hover:bg-purple">
-            <span v-html="items.genre_name" class=""></span>
-          </router-link>
+      <!-- Error -->
+      <ErrorMsg v-if="error" />
+
+      <!-- Loading -->
+      <div v-else class="">
+        <div v-if="loading">
+          <LoadingGenre />
+        </div>
+
+        <!-- Retrieve Successfull -->
+        <div v-else class="bg-teriary rounded-md py-4">
+          <h1 class="font-poppins font-semibold text-white text-xl px-3 mb-3">
+            Genres
+          </h1>
+          <div class="grid grid-cols-6 gap-1 font-ptserif text-white py-2 px-3">
+            <router-link
+              v-for="(items, index) in genres"
+              :key="index"
+              :genre="items"
+              :to="{ name: 'manga-genre', params: { genre: items.endpoint } }"
+              class="col-span-3 rounded-sm px-1 transition duration-300 ease-in-out hover:bg-purple">
+              <span v-html="items.genre_name" class=""></span>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -120,7 +122,7 @@
 </template>
 
 <script>
-  import Service from "@/services/Services.js";
+  import Service from "@/services/services.js";
 
   export default {
     data() {
@@ -192,7 +194,7 @@
           console.log("sorry there was an error " + error);
           this.error = true;
         })
-        .finally(() => (this.error = true));
+        .finally(() => (this.loading = false));
     },
     created() {
       

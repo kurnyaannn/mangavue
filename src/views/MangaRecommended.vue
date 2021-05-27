@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-white font-poppins font-bold text-xl mb-5">
+    <h1 class="text-white font-poppins font-semibold text-xl mb-5">
       Recommended Manga
     </h1>
     <!-- Error -->
@@ -14,7 +14,7 @@
 
       <!-- Retrieve Successfull -->
       <div v-else>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <MangaAltCard
             v-for="(items, index) in mangas"
             :key="index"
@@ -27,7 +27,7 @@
 
 <script>
   import MangaAltCard from "@/components/MangaAltCard.vue";
-  import Service from "@/services/Services.js";
+  import Service from "@/services/services.js";
 
   export default {
     props: {

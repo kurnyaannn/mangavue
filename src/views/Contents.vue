@@ -1,9 +1,19 @@
 <template>
-  <div class="flex flex-row justify-between">
-    <Navbar class="w-1/12" />
-    <div class="flex w-11/12 justify-between">
-      <MainContent class="w-full" />
-      <SideContent class="w-2/5" />
+  <div class="flex flex-col-reverse md:flex-row justify-between md:h-full">
+    <Navbar class="w-full flex-none md:w-2/12 lg:w-1/12 fixed bottom-0 z-50" />
+    <div class="flex flex-row w-full md:w-10/12 lg:flex-row lg:justify-between lg:w-11/12">
+      <MainContent 
+        class="h-full w-full"
+        :class="[isOpen ? 'hidden' : 'block']" />
+      <SideContent
+        class="w-full lg:w-5/12 lg:block"
+        :class="[isOpen ? 'block' : 'hidden']" />
+    </div>
+    <div
+      @click="toggleMenu"
+      class="z-50 fixed right-0 top-0 text-white mt-5 mr-5 p-3 bg-teriary rounded-md cursor-pointer transition ease-in-out duration-300 hover:bg-purple lg:hidden">
+      <Icon
+        :name="[isOpen ? 'x' : 'menu']"/>
     </div>
   </div>
 </template>
@@ -12,7 +22,6 @@
   import Navbar from "@/components/Navbar.vue";
   import MainContent from "@/components/MainContent.vue";
   import SideContent from "@/components/SideContent.vue";
-  import axios from "axios";
 
   export default {
     components: {
@@ -23,17 +32,15 @@
     data() {
       return {
         mangas: [],
+        isOpen: false,
+        iconName: 'menu'
       };
     },
-    created() {
-      axios
-        .get("https://mangamint.kaedenoki.net/api/recommended")
-        .then((response) => {
-          this.mangas = response.data.manga_list;
-        })
-        .catch((error) => {
-          console.log("sorry there was an error " + error.response);
-        });
+    methods: {
+      toggleMenu() {
+        this.isOpen = this.isOpen ? false : true;
+        this.iconName = this.isOpen ? false : true;
+      },
     },
   };
 </script>

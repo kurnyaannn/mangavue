@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-white font-poppins font-bold text-xl mb-5">
+    <h1 class="text-white font-poppins font-semibold text-xl mb-5">
       Most Popular Manga
     </h1>
     <!-- Error -->
@@ -14,7 +14,7 @@
 
       <!-- Retrieve Successfull -->
       <div v-else>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <MangaAltCard
             v-for="(items, index) in mangas"
             :key="index"
@@ -23,7 +23,11 @@
       </div>
       <div class="flex flex-col justify-center items-center mt-6">
         <div class="flex flex-row mx-auto px-2 font-poppins font-semibold text-white">
-          <button @click="previousPage" :disabled="page <= 1" class="bg-teriary rounded-l-md px-3 transition duration-300 ease-in-out hover:bg-purple focus:outline-none">
+          <button
+            @click="previousPage"
+            :disabled="page <= 1"
+            class="rounded-l-md px-3 transition duration-300 ease-in-out hover:bg-purple focus:outline-none"
+            :class="[page <= 1 ? 'bg-gray-700' : 'bg-teriary hover:bg-purple']">
             <Icon name="arrow-left" />
           </button>
           <div class="text-center bg-main w-10 py-2 px-3 "> {{ page }} </div>
@@ -38,7 +42,7 @@
 
 <script>
   import MangaAltCard from "@/components/MangaAltCard.vue";
-  import Service from "@/services/Services.js";
+  import Service from "@/services/services.js";
 
   export default {
     props: {

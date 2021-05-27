@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import MangaDetails from "../components/MangaDetails.vue";
-import MangaChapter from "../components/MangaChapter.vue";
+import MangaDetails from "../views/MangaDetails.vue";
+import MangaChapter from "../views/MangaChapter.vue";
 import MangaLists from "../views/MangaLists.vue";
 import MangaRecommended from "../views/MangaRecommended.vue";
 import MangaPopular from "../views/MangaPopular.vue";
@@ -28,19 +28,19 @@ const routes = [
     component: MangaRecommended,
   },
   {
-    path: "/manga-details/:manga",
+    path: "/manga/:manga",
     name: "manga-details",
     component: MangaDetails,
     props: true,
   },
   {
-    path: "/manga-chapter/:chapter",
+    path: "/manga/:chapter",
     name: "manga-chapter",
     component: MangaChapter,
     props: true,
   },
   {
-    path: "/manga-genre/:genre",
+    path: "/genre/:genre",
     name: "manga-genre",
     component: MangaGenre,
     props: true,
