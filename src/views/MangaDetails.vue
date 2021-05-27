@@ -57,7 +57,7 @@
             </div>
             <div>
               <h1 class="text-xs font-poppins font-semibold mb-1">Chapter List</h1>
-              <div class="ss-container w-full overflow-y-auto max-h-80 bg-teriary p-3 rounded-sm">
+              <div class="ss-container w-full overflow-y-auto max-h-80 bg-secondary p-3 rounded-sm">
                 <ul>
                   <li v-for="(items, index) in chapter" :key="index">
                     <router-link
