@@ -15,8 +15,6 @@ If you find any bug(s) or something, just open issue.
 
 You can see the live demo here : https://mangavue.vercel.app
 
-> *ps: if you like this project and may find this project is usefull, a git star would really be appreciated
-
 ## Installation
 * Clone this repository using `git clone` command (or just download the `zip` version).
 * Navigate to Project Directory. Project setup using `npm`.
