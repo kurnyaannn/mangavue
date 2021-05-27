@@ -36,6 +36,7 @@ You can see the live demo here : https://mangavue.vercel.app
 
 ## Todos
 - [x] Responsive
+- [ ] Make Manga Chapter Image Zommable on Desktop screen
 - [ ] Adding more animation
 - [ ] Navigate Between Manga Chapter
 - [ ] Error Handling
