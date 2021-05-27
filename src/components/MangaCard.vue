@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="p-3 md:pt-2 md:px-3">
-        <h1 v-html="title" class="title font-ptserif text-md mb-1"></h1>
+        <h1 v-html="title" class="font-ptserif text-md mb-1"></h1>
         <span v-html="chapter" class="font-poppins text-white text-xs"></span>
       </div>
     </div>

@@ -1,5 +1,6 @@
 <template>
   <aside class="bg-secondary h-full pb-24 px-5 lg:px-7">
+
     <div class="relative text-gray-600 pt-20 pb-6 lg:pt-6 sticky top-0 z-50 bg-secondary">
       <input
         class="bg-teriary font-poppins text-white w-full h-10 pl-4 pr-12 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green transition ease-in-out duration-300"
@@ -9,7 +10,7 @@
         @focus="focus = true"
         @blur="focus = false"
         placeholder="Search..." />
-      <button type="submit" class="absolute right-0 top-0 mt-9 mr-4">
+      <button type="submit" class="absolute right-0 top-0 mt-20 pt-3 lg:pt-0 lg:mt-9 mr-4">
         <svg
           class="h-4 w-4 fill-current transition ease-in-out duration-300"
           :class="[focus ? 'text-green' : 'text-white']"
