@@ -37,9 +37,9 @@ If you find any bug(s) or something, just open issue.
 
 ## Todos
 - [x] Responsive
-- [] Adding more animation
-- [] Navigate Between Manga Chapter
-- [] Error Handling
+- [ ] Adding more animation
+- [ ] Navigate Between Manga Chapter
+- [ ] Error Handling
 
 ## License
 As you can see MangaVUE is under MIT License
