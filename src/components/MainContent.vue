@@ -12,7 +12,7 @@
 			</div>
       <span class="hidden md:block font-cinzel text-3xl font-bold text-white">MangaVUE</span>
     </div>
-    <router-view class="mb-24 mt-2 md:mb-2 md:mt-3" />
+    <router-view class="mb-24 mt-2 md:mb-2 md:mt-12" />
 	</div>
 </template>
 
