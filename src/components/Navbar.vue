@@ -16,7 +16,7 @@
         </li>
         <div class="flex flex-row justify-around items-center md:grid md:grid-cols-1 md:gap-2 px-8 py-2 bg-teriary md:px-2 md:rounded-md">
           <router-link
-            :to="{ name: 'manga-lists', params: { page: 1 } }" exact
+            :to="{ name: 'manga-lists', params: { page: 1 } }" exact-path
             class="flex flex-col w-12 h-12 text-white justify-center items-center transition duration-300 ease-id-out rounded-md hover:bg-purple hover:text-white">
             <span>
               <Icon name="home" class="fill-current h-5 w-5 transition ease-in-out duration-200" />

@@ -6,7 +6,7 @@
     <!-- Loading -->
     <div v-else>
       <div v-if="loading">
-        <LoadingCard />
+        <LoadingChapter />
       </div>
 
       <!-- Retrieve Successfull -->
