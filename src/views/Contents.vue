@@ -11,7 +11,7 @@
     </div>
     <button
       @click="toggleMenu"
-      class="z-50 fixed right-0 top-0 text-white mt-5 mr-5 p-2 bg-teriary border-2 border-green rounded-md cursor-pointer transition ease-in-out duration-300 focus:outline-none hover:bg-purple lg:hidden">
+      class="z-50 fixed right-0 top-0 text-white mt-5 mr-5 p-2 bg-teriary border-2 border-white rounded-md cursor-pointer transition ease-in-out duration-300 focus:outline-none hover:bg-main lg:hidden">
       <Icon
         :name="[isOpen ? 'x' : 'menu']"/>
     </button>

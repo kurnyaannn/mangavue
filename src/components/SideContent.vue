@@ -106,7 +106,7 @@
         </div>
 
         <!-- Retrieve Successfull -->
-        <div v-else class="bg-teriary rounded-md py-4">
+        <div v-else class="bg-secondary rounded-md py-4">
           <h1 class="font-poppins font-semibold text-white text-xl px-3 mb-3">
             Genres
           </h1>

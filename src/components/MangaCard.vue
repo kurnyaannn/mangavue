@@ -3,11 +3,11 @@
     :to="{ name: 'manga-details', params: { manga: manga.endpoint } }"
     class="w-full">
     <div
-      class="flex flex-col md:flex-row h-full max-h-50 bg-secondary text-white hover:text-green shadow-md rounded-md transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
+      class="flex flex-col md:flex-row h-full bg-secondary text-white hover:text-green shadow-md rounded-md transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg md:max-h-50 lg:max-h-40">
       <img
         :src="thumb"
         :alt="title"
-        class="w-full h-40 rounded-t-md object-cover md:rounded-l-md md:rounded-t-none md:w-2/5 md:h-44"/>
+        class="w-full h-40 rounded-t-md object-cover md:rounded-l-md md:rounded-t-none md:w-2/5 md:h-44 lg:h-40"/>
       <div class="absolute items-baseline l-0 m-2">
         <div
           class="flex font-nunito font-semibold text-xs bg-gray-300 rounded-full px-2">
